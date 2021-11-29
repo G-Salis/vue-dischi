@@ -1,6 +1,7 @@
 <template>
  
-   <select class="search" name= "search">
+   <select class="search" name= "search"
+   v-model="typeSelection" @change="getSelection">
     <option value="all">Seleziona Genere</option>
     <option value="rock">rock</option>
     <option value="pop">pop</option>
@@ -15,14 +16,14 @@ export default {
   name: 'SearchBar',
   data(){
     return{
-      textToSearch: ''
+      typeSelection: '',
     }
   },
   methods:{
-    reset(){
-      this.textToSearch = '';
-      this.$emit('sendSearch',this.textToSearch);
-    }
+    
+  },
+  computed:{
+     getSelection(){return this.$emit("selectionType", this.typeSelection);}
   }
 }
 </script>

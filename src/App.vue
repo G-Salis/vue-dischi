@@ -1,8 +1,9 @@
 <template>
   <div id="app">
 
-    <Nav/>
-    <Main/>
+    <Nav @selectedType="selectedHeader"/>
+    <Main :stringToMain="headerToMain"/>
+  
  
   </div>
 </template>
@@ -19,7 +20,20 @@ export default {
     Nav,
     Main,
   
-  }
+  },
+
+   data(){
+    return{
+    headerToMain: "",
+    }
+  },
+  
+  methods:{
+    selectedHeader(text){
+      this.headerToMain = text;
+    }
+  },
+
 }
 </script>
 

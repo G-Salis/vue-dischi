@@ -4,7 +4,7 @@
     <div class="container">
       
         <Album
-          v-for="(album, index) in albums"
+          v-for="(album, index) in filterAlbum"
           :key="index"
           :albums="album"
         />
@@ -30,6 +30,9 @@ export default {
     Album
     
   },
+   props:{
+    stringToMain: String,
+   },
 
   data(){
     return{
@@ -49,10 +52,28 @@ export default {
         })
     }
   },
+
   mounted(){
     this.getApi();
+  },
+  
+  computed:{
+    filterAlbum(){
+      if (this.stringToMain === "" || this.stringToMain === "all"){
+        return this.albums;
+      }else{
+        let albumsFiltered =[];
+        for(let i = 0; i < this.albums.length -1 ; i++){
+          if (this.albums[i].genre.toUpperCase().includes(this.stringToMain.toUpperCase())){
+          albumsFiltered.push(this.albums[i]);
+          }
+        }
+        return albumsFiltered;
+      }
+    }
   }
 }
+
 </script>
 
 <style lang="scss">

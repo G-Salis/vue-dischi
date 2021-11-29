@@ -3,7 +3,8 @@
   
    <div class="container">
     <img id="logo" src="../assets/img/spotify.png" alt="">
-    <SearchBar/>
+    <SearchBar
+    @selectionType="getGen" />
    </div>
     
   </header>
@@ -19,9 +20,23 @@
   name: 'Nav',
   components:{
 
-    SearchBar
+    SearchBar,
     
   },
+  data(){
+    return{
+      selection : "",
+    }
+  },
+  methods:{
+   getGen(text){
+      this.selection = text;
+      return this.$emit("selectedType",this.selection);
+    }
+  },
+  computed:{
+     
+  }
 }
 </script>
 
