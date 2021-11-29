@@ -2,9 +2,6 @@
   <div class="album">
    
       <img :src="albums.poster" :alt="albums.title">
-  
-
-    
 
       <h4>{{albums.title}}</h4>
       <h5>{{albums.author}}</h5>

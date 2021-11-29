@@ -1,8 +1,9 @@
 <template>
   <header>
-
+  
    <div class="container">
     <img id="logo" src="../assets/img/spotify.png" alt="">
+    <SearchBar/>
    </div>
     
   </header>
@@ -10,7 +11,21 @@
 
 <script>
 
+  import SearchBar from './SearchBar';
+
+
+  export default {
+
+  name: 'Nav',
+  components:{
+
+    SearchBar
+    
+  },
+}
 </script>
+
+
 
 <style lang="scss" >
   header{
